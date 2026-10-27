@@ -13,7 +13,11 @@ Date::Date() {
 }
 void Date::setDate(int d, int m, int y)
 {
-	if (d < 1 || d > 31 || m < 1 || m > 12 || y < 1900) {
+	if (d < 1 || d > 31 
+		|| (m == 2 && d > 29 && (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)))
+		|| ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30)
+		|| m < 1 || m > 12 
+		|| y < 1900) {
 		cout << "Invalid date. Please enter a valid date." << endl;
 		exit(1);
 	}
@@ -27,7 +31,7 @@ void Date::setDate(int d, int m, int y)
 int Date::getMonth() const{
     return month;
 }
-string Date::getMonthStr() const{
+std::string Date::getMonthStr() const{
 	switch (month) {
 	case 1:
 		return "January";

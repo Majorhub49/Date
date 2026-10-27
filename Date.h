@@ -2,6 +2,8 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include <string>
+
 class Date {
 private:
 	int day;
@@ -12,7 +14,7 @@ public:
 	Date(); 
 	void setDate(int, int, int);
 	int getMonth() const;
-	string getMonthStr() const;
+	std::string getMonthStr() const;
 	int getDay() const;
 	int getYear() const;
 	bool isLeapYear() const;
