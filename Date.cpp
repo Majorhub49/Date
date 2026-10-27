@@ -13,8 +13,9 @@ Date::Date() {
 }
 void Date::setDate(int d, int m, int y)
 {
-	if (d < 1 || d > 31 
-		|| (m == 2 && d > 29 && (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0)))
+	if (   d < 1 
+		|| d > 31 
+		|| (m == 2 && d > 28 && (y % 4 != 0 && (y % 100 == 0 || y % 400 != 0)))
 		|| ((m == 4 || m == 6 || m == 9 || m == 11) && d > 30)
 		|| m < 1 || m > 12 
 		|| y < 1900) {
@@ -119,4 +120,10 @@ void Date::print() const {
 	cout << "Date: " << month << "/" << day << "/" << year << endl;
 	cout << "Date: " << getMonthStr() << " " << day << ", " << year << endl;
 	cout << "Date: " << day << " " << getMonthStr() << " " << year << endl;
+	if (isLeapYear()) {
+		cout << year << " is a leap year." << endl;
+	}
+	else {
+		cout << year << " is not a leap year." << endl;
+	}
 }
